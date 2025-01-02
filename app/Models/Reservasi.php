@@ -30,7 +30,7 @@ class Reservasi extends Model
     }
     public function layanan()
     {
-        return $this->belongsToMany(LayananHotel::class, 'reservasi_layanan')
+        return $this->belongsToMany(LayananHotel::class, 'pivot_reservasi_layanan')
             ->withPivot('jumlah')
             ->withTimestamps();
     }

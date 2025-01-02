@@ -16,7 +16,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- SweetAlert2 CDN -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -39,12 +39,12 @@
                     </h4>
                     <span class="text-sm tracking-wide flex items-center space-x-1">
                         @if (auth()->user()->role == 'admin')
-                        <svg class="h-4 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
-                        
+                            <svg class="h-4 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+
                         @endif
                         <span class="text-gray-600">{{ Auth::user()->role }}</span>
                     </span>
@@ -89,7 +89,7 @@
                     </li>
 
                     <li x-data="{ open: false }">
-                        <x-sidebar-link :active="request()->routeIs('layanan') || request()->routeIs('managereservasi' || request()->routeIs('managepembayaran'))" wire:navigate @click.prevent="open = !open">
+                        <x-sidebar-link :active="request()->routeIs('layanan') || request()->routeIs('reservasi') || request()->routeIs('pembayaran')" wire:navigate @click.prevent="open = !open">
                             <div class="flex gap-2">
                                 <div class="text-gray-700">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -114,20 +114,20 @@
                             class="space-y-2 pl-3 pt-2">
                             <ul>
                                 <li>
+                                    <x-sidebar-link :href="route('layanan')"
+                                       :active="request()->routeIs('layanan')" wire:navigate>
+                                        <div class="flex gap-2">
+                                            <div class="text-gray-700"></div>
+                                            <div>{{ __('Manajemen Layanan') }}</div>
+                                        </div>
+                                    </x-sidebar-link>
+                                </li>
+                                <li>
                                     <x-sidebar-link :href="route('reservasi')" :active="request()->routeIs('reservasi')"
                                         wire:navigate>
                                         <div class="flex gap-2">
                                             <div class="text-gray-700"></div>
                                             <div>{{ __('Manajemen Reservasi') }}</div>
-                                        </div>
-                                    </x-sidebar-link>
-                                </li>
-                                <li>
-                                    <x-sidebar-link :href="route('layanan')"
-                                        :active="request()->routeIs('layanan')" wire:navigate>
-                                        <div class="flex gap-2">
-                                            <div class="text-gray-700"></div>
-                                            <div>{{ __('Manajemen Layanan') }}</div>
                                         </div>
                                     </x-sidebar-link>
                                 </li>

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pivot_reservasi_layanan', function (Blueprint $table) {
             $table->id();
             $table->foreignId('reservasi_id')->constrained('tbl_reservasi')->onDelete('cascade');
-            $table->foreignId('layanan_id')->constrained('tbl_layanan_hotel')->onDelete('cascade');
+            $table->foreignId('layanan_hotel_id')->constrained('tbl_layanan_hotel')->onDelete('cascade');
             $table->integer('jumlah')->default(1); 
             $table->timestamps();
         });

@@ -16,6 +16,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/layanan', \App\Livewire\Pages\Admin\LayananIndex::class)->name('layanan');
 
     Route::get('/reservasi', \App\Livewire\Pages\Admin\ReservasiIndex::class)->name('reservasi');
+    Route::get('/createreservasi', \App\Livewire\Pages\Admin\ReservasiCreate::class)->name('createreservasi');
+    Route::get('/reservasi/edit/{id}', \App\Livewire\Pages\Admin\ReservasiEdit::class)->name('editreservasi');
+
 
     Route::get('/pembayaran', \App\Livewire\Pages\Admin\PembayaranIndex::class)->name('pembayaran');
 

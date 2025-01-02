@@ -57,11 +57,12 @@ new class extends Component
                         </x-dropdown-link>
 
                         <!-- Authentication -->
-                        <button wire:click="logout" class="w-full text-start">
+                        <form class="cursor-pointer" action="{{ route('logout') }}" method="POST">
+                            @csrf
                             <x-dropdown-link>
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </button>
+                            {{ __('Logout') }}
+                        </x-dropdown-link>
+                        </form>
                     </x-slot>
                 </x-dropdown>
             </div>

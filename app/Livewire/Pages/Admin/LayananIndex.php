@@ -7,13 +7,17 @@ use App\Models\LayananHotel;
 
 class LayananIndex extends Component
 {
+    public $showCreateModal = false, $showEditModal = false, $layanan_id, $nama_layanan, $harga_layanan, $tgl_layanan;
     public $cari = '', $sort = 'nama_layanan', $direction = 'asc';
-    public $layananId, $layanan;
-
     protected $queryString = [
         'cari' => ['except' => ''],
         'sort' => ['except' => 'nama_layanan'],
         'direction' => ['except' => 'asc'],
+    ];
+    protected $rules = [
+        'nama_layanan' => 'required|string|max:255',
+        'harga_layanan' => 'required|numeric',
+        'tgl_layanan' => 'required|date',
     ];
 
     public function updatePencarian()
@@ -30,7 +34,57 @@ class LayananIndex extends Component
             $this->direction = 'asc';
         }
     }
+    public function showCreate()
+    {
+        $this->resetInputFields();
+        $this->showCreateModal = true;
+    }
 
+    public function showEdit($id)
+    {
+        $layanan = LayananHotel::findOrFail($id);
+        $this->layanan_id = $layanan->id;
+        $this->nama_layanan = $layanan->nama_layanan;
+        $this->harga_layanan = $layanan->harga_layanan;
+        $this->tgl_layanan = $layanan->tgl_layanan;
+
+        $this->showEditModal = true;
+    }
+
+    public function closeModal()
+    {
+        $this->showCreateModal = false;
+        $this->showEditModal = false;
+    }
+
+    public function createLayanan()
+    {
+        $this->validate();
+
+        LayananHotel::create([
+            'nama_layanan' => $this->nama_layanan,
+            'harga_layanan' => $this->harga_layanan,
+            'tgl_layanan' => $this->tgl_layanan,
+        ]);
+
+        session()->flash('message', 'Layanan created successfully!');
+        $this->closeModal();
+    }
+
+    public function updateLayanan()
+    {
+        $this->validate();
+
+        $layanan = LayananHotel::find($this->layanan_id);
+        $layanan->update([
+            'nama_layanan' => $this->nama_layanan,
+            'harga_layanan' => $this->harga_layanan,
+            'tgl_layanan' => $this->tgl_layanan,
+        ]);
+
+        session()->flash('message', 'Layanan updated successfully!');
+        $this->closeModal();
+    }
     public function delete($id)
     {
         $layanan = LayananHotel::find($id);
@@ -44,18 +98,25 @@ class LayananIndex extends Component
 
         return redirect()->route('layanan');
     }
+    public function resetInputFields()
+    {
+        $this->nama_layanan = '';
+        $this->harga_layanan = '';
+        $this->tgl_layanan = '';
+    }
+
     public function render()
     {
-        $layanan = LayananHotel::query()
+        $layanans = LayananHotel::query()
             ->when($this->cari, function ($query) {
                 $query->where('nama_layanan', 'like', "%{$this->cari}%")
                     ->orWhere('harga_layanan', 'like', "%{$this->cari}%");
             })
             ->orderBy($this->sort, $this->direction)
-            ->paginate(5);
+            ->paginate(8);
 
         return view('livewire.pages.admin.layanan-index', [
-            'layanans' => $layanan,
+            'layanans' => $layanans,
         ])->layout('layouts.admin');
     }
 

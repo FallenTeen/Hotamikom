@@ -28,14 +28,14 @@
                         </form>
                     </div>
                     <div>
-                        <a href="#" @click="openModal('create')"
+                        <button type="button" wire:click="showCreate"
                             class="inline-flex items-center py-2 px-3 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
                             Tambah Layanan
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -54,6 +54,7 @@
                                         <span class="absolute">&darr;</span>
                                     @endif
                                 @endif
+
                             </th>
                             <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="sortBy('harga_layanan')">
                                 Harga Layanan
@@ -93,12 +94,10 @@
                                     {{ $lay->tgl_layanan }}
                                 </td>
                                 <td class="px-6 py-4">
+                                    <button wire:click="showEdit({{ $lay->id }})"
+                                        class="bg-blue-700 text-white px-4 py-1 rounded">Edit</button>
                                     <button wire:click="delete({{ $lay->id }})"
                                         class="bg-red-500 text-white px-4 py-1 rounded">Hapus</button>
-                                    <button wire:click="editLayanan({{ $lay->id }})"
-                                        class="bg-blue-700 text-white px-4 py-1 rounded">
-                                        Edit
-                                    </button>
                                 </td>
                             </tr>
                         @empty
@@ -109,10 +108,41 @@
                     </tbody>
                 </table>
 
-                <div class="mt-4">
-                    {{ $layanans->links() }}
-                </div>
+
+            </div>
+            <div class="mt-4">
+                {{ $layanans->links() }}
             </div>
         </div>
     </div>
+    @if($showCreateModal || $showEditModal)
+        <div class="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
+            <div class="bg-white rounded-lg p-6 w-1/3">
+                <h2 class="text-xl font-semibold mb-4">{{ $showCreateModal ? 'Tambah Layanan' : 'Edit Layanan' }}</h2>
+                <form wire:submit.prevent="{{ $showCreateModal ? 'createLayanan' : 'updateLayanan' }}">
+                    <div class="mb-4">
+                        <label for="nama_layanan" class="block text-sm font-medium text-gray-700">Nama Layanan</label>
+                        <input type="text" wire:model="nama_layanan" id="nama_layanan" class="w-full p-2 border rounded">
+                        @error('nama_layanan') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-4">
+                        <label for="harga_layanan" class="block text-sm font-medium text-gray-700">Harga Layanan</label>
+                        <input type="number" wire:model="harga_layanan" id="harga_layanan"
+                            class="w-full p-2 border rounded">
+                        @error('harga_layanan') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-4">
+                        <label for="tgl_layanan" class="block text-sm font-medium text-gray-700">Tanggal Layanan</label>
+                        <input type="date" wire:model="tgl_layanan" id="tgl_layanan" class="w-full p-2 border rounded">
+                        @error('tgl_layanan') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="button" wire:click="closeModal" class="px-4 py-2 bg-gray-300 rounded">Tutup</button>
+                        <button type="submit"
+                            class="px-4 py-2 bg-blue-600 text-white rounded ml-2">{{ $showCreateModal ? 'Tambah' : 'Update' }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endif
 </div>

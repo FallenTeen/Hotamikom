@@ -4,10 +4,10 @@ namespace App\Livewire\Pages\Admin;
 
 use Livewire\Component;
 
-class Layanan extends Component
+class ReviewIndex extends Component
 {
     public function render()
     {
-        return view('livewire.pages.admin.layanan');
+        return view('livewire.pages.admin.review-index');
     }
 }

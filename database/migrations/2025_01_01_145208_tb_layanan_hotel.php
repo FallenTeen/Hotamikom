@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_layanan');
             $table->integer('harga_layanan');
             $table->date('tgl_layanan');
+            $table->timestamps();
         });
     }
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('jumlah_pembayaran');
             $table->enum('metode_pembayaran',['cash','transfer']);
             $table->enum('status_pembayaran',['pending','approved','canceled']);
+            $table->timestamps();
         });
     }
 

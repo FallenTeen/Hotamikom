@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('rating');
             $table->text('komentar');
             $table->date('tgl_review');
+            $table->timestamps();
         });
     }
 

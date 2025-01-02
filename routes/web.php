@@ -9,23 +9,22 @@ Route::view('/', 'welcome')->name('/');
 
 //ADMIN ROUTE ONLY
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::view('profile', 'profile')->name('profile');
-
     Route::get('/managekamar', \App\Livewire\Pages\Admin\KamarIndex::class)->name('managekamar');
     Route::get('/createkamar', \App\Livewire\Pages\Admin\KamarCreate::class)->name('createkamar');
     Route::get('/editkamar/{id}', \App\Livewire\Pages\Admin\KamarEdit::class)->name('editkamar');
 
-    Route::view('/reservasi', 'livewire.pages.admin.managereservasi')->name('reservasi');
-    Route::view('/layanan', 'livewire.pages.admin.layanan')->name('layanan');
-    Route::view('/pembayaran', 'livewire.pages.admin.managepembayaran')->name('pembayaran');
+    Route::get('/layanan', \App\Livewire\Pages\Admin\LayananIndex::class)->name('layanan');
 
-    Route::view('/review', 'livewire.pages.admin.review')->name('review');
+    Route::get('/reservasi', \App\Livewire\Pages\Admin\ReservasiIndex::class)->name('reservasi');
+
+    Route::get('/pembayaran', \App\Livewire\Pages\Admin\PembayaranIndex::class)->name('pembayaran');
+
+    Route::get('/review', \App\Livewire\Pages\Admin\ReviewIndex::class)->name('review');
 });
 
 
 //USER ROUTE ONLY
 Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::view('profile', 'profile')->name('profile');
 });
 
 Route::get('/dashboard', function () {

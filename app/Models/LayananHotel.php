@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class LayananHotel extends Model
 {
-    protected $table = 'tbl_layanan';
+    protected $table = 'tbl_layanan_hotel';
     protected $fillable = [
         'nama_layanan',
         'harga_layanan',

@@ -1,4 +1,4 @@
-@if ($paginator->hasPages())
+@if ($paginator && $paginator->hasPages())
     <nav class="flex justify-between items-center" aria-label="Pagination">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
@@ -14,7 +14,7 @@
 
         {{-- Pagination Elements --}}
         <div class="flex items-center space-x-2">
-            @foreach ($elements as $element)
+            @foreach ($paginator->elements() as $element)
                 {{-- "Three Dots" Separator --}}
                 @if (is_string($element))
                     <span class="px-4 py-2 text-sm font-medium text-gray-400">{{ $element }}</span>

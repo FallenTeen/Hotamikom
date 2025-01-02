@@ -49,6 +49,8 @@ class KamarIndex extends Component
 
     public function editKamar($id)
     {
+        // $kamar = Kamar::find($id);
+        // dd($kamar);
         return redirect()->route('editkamar', $id);
     }
 

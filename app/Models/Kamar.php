@@ -12,6 +12,8 @@ class Kamar extends Model
         'tipe_kamar',
         'harga_per_malam',
         'kapasitas',
+        'gambar',
+        'deskripsi',
         'status'
     ];
     public $timestamps = false;

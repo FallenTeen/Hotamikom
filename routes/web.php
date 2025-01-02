@@ -12,6 +12,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::view('profile', 'profile')->name('profile');
 
     Route::get('/managekamar', \App\Livewire\Pages\Admin\KamarIndex::class)->name('managekamar');
+    Route::get('/createkamar', \App\Livewire\Pages\Admin\KamarCreate::class)->name('createkamar');
     Route::get('/editkamar/{id}', \App\Livewire\Pages\Admin\KamarEdit::class)->name('editkamar');
 
     Route::view('/reservasi', 'livewire.pages.admin.managereservasi')->name('reservasi');

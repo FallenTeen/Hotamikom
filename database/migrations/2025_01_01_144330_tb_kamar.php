@@ -16,7 +16,10 @@ return new class extends Migration {
             $table->enum('tipe_kamar',['vip','reguler']);
             $table->integer('harga_per_malam');
             $table->integer('kapasitas');
-            $table->enum('status',['tersedia','terisi']);
+            $table->enum('status',['tersedia','terisi'])->default('tersedia');
+            $table->string('gambar')->nullable();
+            $table->text('deskripsi')->nullable();
+            $table->timestamps();
         });
 
     }

@@ -5,7 +5,7 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Kelola Kamar') }} {{ $nomor_kamar }}
+            {{ __('Kelola Kamar') }}
         </h2>
         @if (session()->has('message'))
             <div class="bg-green-500 text-white p-4 rounded-md mb-4">
@@ -17,22 +17,24 @@
     <div class="w-full h-full mt-8 font-poppins">
         <div class="bg-white px-12 py-8 rounded-lg flex flex-col">
             <div class="justify-between flex items-center">
-                <span class="text-2xl font-bold">Tabel Kelola Kamar</span>
+                <span class="text-2xl font-bold">Tambahkan Kamar Baru</span>
             </div>
 
             <form wire:submit.prevent="save">
                 <div class="grid grid-cols-3 gap-4 items-center mb-8">
                     <!-- Gambar -->
                     <div class=" col-span-1 flex justify-center items-center">
-                        @if ($gambar && is_object($gambar))
-                            <img src="{{ $gambar->temporaryUrl() }}" class="mt-2 h-full w-full object-cover" />
-                        @elseif ($existingGambar)
-                            <img src="{{ Storage::url($existingGambar) }}" class="mt-2 h-full w-full object-cover" />
-                        @else
 
-                            <div class="flex items-center justify-center w-full">
+                        <div class="flex flex-row items-center justify-center w-full">
+
+                            @if ($gambar)
+                                <div class="mt-4">
+                                    <img src="{{ $gambar->temporaryUrl() }}" class="w-full h-full object-cover rounded-md"
+                                        alt="Image preview">
+                                </div>
+                            @else
                                 <label for="dropzone-file"
-                                    class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                    class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                                     <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                         <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
@@ -47,9 +49,9 @@
                                     </div>
                                     <input id="dropzone-file" type="file" class="hidden" wire:model="gambar" />
                                 </label>
-                            </div>
+                            @endif
+                        </div>
 
-                        @endif
                         @error('gambar') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                     </div>
 
@@ -68,6 +70,7 @@
                                     Kamar</label>
                                 <select id="tipe_kamar" wire:model="tipe_kamar"
                                     class="w-full mt-2 p-2 border border-gray-300 rounded-lg">
+                                    <option value="">Pilih Opsi</option>
                                     <option value="vip">VIP</option>
                                     <option value="reguler">Reguler</option>
                                 </select>

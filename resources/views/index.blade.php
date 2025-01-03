@@ -28,7 +28,7 @@
         <div class="container mx-auto px-4 relative z-10 h-full">
             <div class="flex justify-center items-center h-full">
                 <div class="text-center" data-aos="fade-up">
-                    <span class="custom-caption text-uppercase text-white block mb-3">Welcome To Hotel Amikom  <span
+                    <span class="custom-caption text-uppercase text-white block mb-3">Welcome To Hotel Amikom <span
                             class="fa fa-star text-primary"></span> Hotel</span>
                     <h1 class="heading text-4xl font-bold text-white">A Best Place To Stay</h1>
                 </div>
@@ -41,8 +41,8 @@
         </a>
     </section>
 
-    <section class="bg-white rounded-3xl py-16">
-        <div class="container mx-auto px-4">
+    <section class=" bg-gray-100">
+        <div class="container mx-auto px-6 py-4  bg-white shadow-lg rounded-3xl -translate-y-32">
             <div class="row check-availabilty" id="next">
                 <div class="block-32" data-aos="fade-up" data-aos-offset="-200">
                     <form action="/room" method="get">
@@ -97,11 +97,53 @@
                 </div>
             </div>
         </div>
+        <div class="-mt-24 px-16">
+            <div class="flex items-center gap-12">
+                <div class="w-1/2">
+                    <div class="grid grid-rows-4 gap-4">
+                        <div class="row-span-1 font-Dmserif font-bold text-6xl">Selamat Datang</div>
+                        <div class="row-span-2 items-center  justify-center text-2xl text-gray-700">
+                            Hotel Amikom menawarkan kenyamanan dan fasilitas modern di pusat kota, dengan kamar luas,
+                            pusat kebugaran, dan restoran terbaik untuk pengalaman menginap yang tak terlupakan.
+                        </div>
+                        <div class="row-span-1 mt-4">
+                            <div class="flex gap-4 items-center">
+                                <a href="/reservation"
+                                    class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-full shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    Jelajahi
+                                </a>
+                                <span>Atau</span>
+                                <a href="/reservation"
+                                    class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-full shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    Reservasi Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2 h-96 mb-12 bg-cover bg-center"
+                    style="background-image: url('{{ asset('images/main-building.jpg') }}');">
+                    <!-- Gambar berada di sini sebagai latar belakang -->
+                </div>
+            </div>
+        </div>
+
     </section>
 
+
     <section>
-        <div class="bg-white w-full">
-            Telusuri
+        <div class="bg-white w-full pt-16">
+            <div class="grid space-y-8 justify-center items-center">
+                <h1 class="text-6xl font-Dmserif font-bold text-center">Pilihan Kamar</h1>
+                <p class="text-center  text-2xl text-gray-700 max-w-6xl"> Hotel Amikom menawarkan kenyamanan dan fasilitas modern di pusat kota, dengan kamar luas,
+                pusat kebugaran, dan restoran terbaik untuk pengalaman menginap yang tak terlupakan.</p>
+
+                <div class="grid grid-cols-3">
+                    <div class="col-span-1">Gambar1</div>
+                    <div class="col-span-1">Gambar2</div>
+                    <div class="col-span-1">Gambar3</div>
+                </div>
+            </div>
         </div>
     </section>
 

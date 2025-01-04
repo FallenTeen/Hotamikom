@@ -113,7 +113,7 @@ class LayananIndex extends Component
                     ->orWhere('harga_layanan', 'like', "%{$this->cari}%");
             })
             ->orderBy($this->sort, $this->direction)
-            ->paginate(8);
+            ->paginate(6);
 
         return view('livewire.pages.admin.layanan-index', [
             'layanans' => $layanans,

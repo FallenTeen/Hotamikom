@@ -146,7 +146,7 @@ class PembayaranIndex extends Component
                     ->orWhere('jumlah_pembayaran', 'like', "%{$this->cari}%");
             })
             ->orderBy($this->sort, $this->direction)
-            ->paginate(8);
+            ->paginate(6);
 
         return view('livewire.pages.admin.pembayaran-index', [
             'pembayarans' => $pembayarans,

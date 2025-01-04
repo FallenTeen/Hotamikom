@@ -160,7 +160,7 @@
 
             </div>
             <div class="mt-4">
-                {{ $kamar->links('components.custom-pagination') }}
+                {{ $kamar->links() }}
             </div>
         </div>
     </div>

@@ -42,7 +42,7 @@ class ReservasiIndex extends Component
     {
         $reservasis = Reservasi::with(['user', 'kamar', 'layanan', 'pembayaran', 'review'])
             ->orderBy($this->sort, $this->direction)
-            ->paginate(10);
+            ->paginate(6);
         foreach ($reservasis as $rsv) {
             $checkin = \Carbon\Carbon::parse($rsv->tgl_checkin);
             $checkout = \Carbon\Carbon::parse($rsv->tgl_checkout);

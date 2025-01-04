@@ -62,7 +62,7 @@ class KamarIndex extends Component
                     ->orWhere('tipe_kamar', 'like', "%{$this->cari}%");
             })
             ->orderBy($this->sort, $this->direction)
-            ->paginate(10);
+            ->paginate(6);
 
         return view('livewire.pages.admin.kamar-index', [
             'kamar' => $kamar,

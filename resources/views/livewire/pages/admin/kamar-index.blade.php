@@ -85,7 +85,7 @@
                                     @endif
                                 @endif
                             </th>
-                            <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="sortBy('status')">
+                            <th scope="col" class="px-6 py-3 cursor-pointer text-center" wire:click="sortBy('status')">
                                 Status
                                 @if ($sort === 'status')
                                     @if ($direction === 'asc')
@@ -116,10 +116,10 @@
                                 <td class="px-6 py-4">
                                     {{ $item->kapasitas }} Orang
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 flex justify-center">
                                     @if ($item->status === 'tersedia')
                                         <span
-                                            class=" w-3/5 h-8 justify-center inline-flex items-center px-3 py-4 text-sm font-medium text-green-700 bg-green-100 rounded-full">
+                                            class=" w-3/5 h-8 justify-center flex items-center px-3 py-4 text-sm font-medium text-green-700 bg-green-100 rounded-full">
                                             <svg class="w-5 h-6 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -129,7 +129,7 @@
                                         </span>
                                     @elseif ($item->status === 'terisi')
                                         <span
-                                            class=" w-3/5 h-8 justify-center inline-flex items-center px-3 py-4 text-sm font-medium text-yellow-700 bg-yellow-100 rounded-full">
+                                            class=" w-3/5 h-8 justify-center flex items-center px-3 py-4 text-sm font-medium text-yellow-700 bg-yellow-100 rounded-full">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -146,7 +146,7 @@
                                     @endif
                                 </td>
 
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 ">
                                     <button wire:click="delete({{ $item->id }})"
                                         class="bg-red-500 text-white px-4 py-1 rounded">Hapus</button>
                                     <button wire:click="editKamar({{ $item->id }})"

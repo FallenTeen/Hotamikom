@@ -17,7 +17,8 @@ class Reservasi extends Model
         'status'
     ];
     public $timestamps = false;
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class, 'id_user');
     }
     public function kamar()
@@ -35,7 +36,20 @@ class Reservasi extends Model
             ->withTimestamps();
     }
 
-    public function review(){
+    public function review()
+    {
         return $this->hasOne(Review::class, 'id_reservasi');
+    }
+    protected static function booted()
+    {
+        static::created(function ($reservasi) {
+            \App\Models\Pembayaran::create([
+                'id_reservasi' => $reservasi->id,
+                'tgl_pembayaran' => null,
+                'jumlah_pembayaran' => $reservasi->total_harga,
+                'metode_pembayaran' => 'cash', 
+                'status_pembayaran' => 'pending', 
+            ]);
+        });
     }
 }

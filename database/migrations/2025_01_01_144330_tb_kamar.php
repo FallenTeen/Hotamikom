@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('tbl_kamar', function (Blueprint $table) {
             $table->id();
             $table->string('nomor_kamar');
-            $table->enum('tipe_kamar',['vip','reguler']);
+            $table->enum('tipe_kamar',['vip','reguler', 'suite']);
             $table->integer('harga_per_malam');
             $table->integer('kapasitas');
             $table->enum('status',['tersedia','terisi'])->default('tersedia');

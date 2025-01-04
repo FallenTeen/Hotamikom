@@ -19,7 +19,8 @@ class KamarSeeder extends Seeder
         foreach (range(1, 10) as $index) {
             DB::table('tbl_kamar')->insert([
                 'nomor_kamar' => 'K' . str_pad($index, 3, '0', STR_PAD_LEFT),
-                'tipe_kamar' => $faker->randomElement(['vip', 'reguler']),
+                'tipe_kamar' => $faker->randomElement(['vip', 'reguler','suite']),
+                'rekomendasi' => $faker->boolean(50),
                 'harga_per_malam' => $faker->numberBetween(50000, 150000),
                 'kapasitas' => $faker->numberBetween(1, 4),
                 'status' => $faker->randomElement(['tersedia', 'terisi']),

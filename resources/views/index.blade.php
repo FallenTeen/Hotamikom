@@ -138,10 +138,10 @@
                 <p class="text-center  text-2xl text-gray-700 max-w-6xl"> Hotel Amikom menawarkan kenyamanan dan fasilitas modern di pusat kota, dengan kamar luas,
                 pusat kebugaran, dan restoran terbaik untuk pengalaman menginap yang tak terlupakan.</p>
 
-                <div class="grid grid-cols-3">
-                    <div class="col-span-1">Gambar1</div>
-                    <div class="col-span-1">Gambar2</div>
-                    <div class="col-span-1">Gambar3</div>
+                <div class="grid grid-cols-3 gap-8">
+                    <div class="col-span-1 grid justify-center">Gambar1</div>
+                    <div class="col-span-1 grid justify-center">Gambar2</div>
+                    <div class="col-span-1 grid justify-center">Gambar3</div>
                 </div>
             </div>
         </div>

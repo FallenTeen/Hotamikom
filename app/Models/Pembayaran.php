@@ -15,4 +15,8 @@ class Pembayaran extends Model
         'status_pembayaran',
         'status_pembayaran',
     ];
+
+    public function reservasi(){
+        return $this->belongsTo(Reservasi::class, 'id_reservasi');
+    }
 }

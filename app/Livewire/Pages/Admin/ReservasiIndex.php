@@ -27,6 +27,20 @@ class ReservasiIndex extends Component
     {
         return redirect()->route('editreservasi', $id);
     }
+    public function delete($id)
+    {
+
+        $reservasi = Reservasi::find($id);
+
+        if ($reservasi) {
+            $reservasi->layanan()->detach();
+            $reservasi->delete();
+            session()->flash('message', 'Reservasi berhasil dihapus.');
+            $this->dispatch('refreshReservasiTable');
+        } else {
+            session()->flash('error', 'Reservasi tidak ditemukan.');
+        }
+    }
 
     public function sortBy($field)
     {

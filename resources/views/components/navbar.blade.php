@@ -10,6 +10,14 @@
         </a>
 
         <!-- Mobile Menu Button -->
+        <div class="items-center flex gap-8">
+        @if (!Auth::check())
+            <a href="{{ route('login') }}">Login</a>
+            <a href="{{ route('register') }}">Register</a>
+        @else
+            <h1>Halo, {{ Auth::user()->name }}</h1>
+        @endif
+
         <button @click="open = !open"
                 :class="{'bg-transparent text-white': !scrolled, ' text-black': scrolled}"
                 class="inline-flex items-center justify-end p-2 w-10 h-10 text-sm text-white rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
@@ -19,6 +27,7 @@
                       d="M1 1h15M1 7h15M1 13h15" />
             </svg>
         </button>
+        </div>
     </div>
 
     <!-- Mobile Menu with Animation -->
@@ -62,9 +71,9 @@
            aria-current="page">Room</a>
     </li>
     <li>
-        <a href="{{ route('reservasi') }}" 
+        <a href="{{ route('res') }}" 
            class="block py-2 px-3 text-6xl font-Dmserif rounded 
-                  {{ request()->is('reservasi') ? 'text-blue-600 dark:bg-blue-600' : 'text-gray-900 dark:bg-gray-800' }}"
+                  {{ request()->is('res') ? 'text-blue-600 dark:bg-blue-600' : 'text-gray-900 dark:bg-gray-800' }}"
            aria-current="page">Reservasi</a>
     </li>
 </ul>

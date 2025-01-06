@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 Route::view('/', 'index')->name('/');
 Route::view('/index', 'index')->name('index');
-Route::view('/room', 'index')->name('room');
-Route::view('/reservation', 'index')->name('res');
+Route::view('/room', 'kamar')->name('room');
+Route::view('/reservation', 'reservasi')->name('res');
 
 //ADMIN ROUTE ONLY
 Route::middleware(['auth', 'role:admin'])->group(function () {

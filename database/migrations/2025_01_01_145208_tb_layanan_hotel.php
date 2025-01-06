@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nama_layanan');
             $table->integer('harga_layanan');
+            $table->enum('kategori',['makanan','minuman','layanan_tambahan']);
+            $table->text('deskripsi')->nullable();
             $table->date('tgl_layanan');
             $table->timestamps();
         });

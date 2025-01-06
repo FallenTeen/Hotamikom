@@ -10,6 +10,8 @@ class LayananHotel extends Model
     protected $fillable = [
         'nama_layanan',
         'harga_layanan',
+        'kategori',
+        'deskripsi',
         'tgl_layanan',
     ];
 

@@ -53,6 +53,27 @@ class KamarIndex extends Component
         // dd($kamar);
         return redirect()->route('editkamar', $id);
     }
+    public function toggleRekomendasi($id)
+    {
+        $kamar = Kamar::find($id);
+
+        if ($kamar) {
+            switch ($kamar->rekomendasi) {
+                case true:
+                    $kamar->rekomendasi = false;
+                    break;
+                case false:
+                    $kamar->rekomendasi = true;
+                    break;
+            }
+
+            $kamar->save();
+
+            session()->flash('message', 'Status rekomendasi berhasil diubah.');
+        } else {
+            session()->flash('error', 'Kamar tidak ditemukan.');
+        }
+    }
 
     public function render()
     {

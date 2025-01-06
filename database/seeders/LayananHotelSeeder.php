@@ -20,6 +20,8 @@ class LayananHotelSeeder extends Seeder
             DB::table('tbl_layanan_hotel')->insert([
                 'nama_layanan' => $faker->word(),
                 'harga_layanan' => $faker->numberBetween(100000, 1000000),
+                'kategori' => $faker->randomElement(['makanan', 'minuman', 'layanan_tambahan']),
+                'deskripsi' => $faker->paragraph,
                 'tgl_layanan' => $faker->date(),
             ]);
         }

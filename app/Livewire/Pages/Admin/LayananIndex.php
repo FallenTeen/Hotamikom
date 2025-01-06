@@ -7,7 +7,7 @@ use App\Models\LayananHotel;
 
 class LayananIndex extends Component
 {
-    public $showCreateModal = false, $showEditModal = false, $layanan_id, $nama_layanan, $harga_layanan, $tgl_layanan;
+    public $showCreateModal = false, $showEditModal = false, $layanan_id, $nama_layanan, $harga_layanan, $tgl_layanan, $kategori, $deskripsi;
     public $cari = '', $sort = 'nama_layanan', $direction = 'asc';
     protected $queryString = [
         'cari' => ['except' => ''],
@@ -17,6 +17,8 @@ class LayananIndex extends Component
     protected $rules = [
         'nama_layanan' => 'required|string|max:255',
         'harga_layanan' => 'required|numeric',
+        'kategori' => 'required|string|max:255',
+        'deskripsi' => 'string|max:255',
         'tgl_layanan' => 'required|date',
     ];
 
@@ -46,6 +48,8 @@ class LayananIndex extends Component
         $this->layanan_id = $layanan->id;
         $this->nama_layanan = $layanan->nama_layanan;
         $this->harga_layanan = $layanan->harga_layanan;
+        $this->kategori = $layanan->kategori;
+        $this->deskripsi = $layanan->deskripsi;
         $this->tgl_layanan = $layanan->tgl_layanan;
 
         $this->showEditModal = true;
@@ -64,6 +68,8 @@ class LayananIndex extends Component
         LayananHotel::create([
             'nama_layanan' => $this->nama_layanan,
             'harga_layanan' => $this->harga_layanan,
+            'kategori' => $this->kategori,
+            'deskripsi' => $this->deskripsi,
             'tgl_layanan' => $this->tgl_layanan,
         ]);
 
@@ -79,6 +85,8 @@ class LayananIndex extends Component
         $layanan->update([
             'nama_layanan' => $this->nama_layanan,
             'harga_layanan' => $this->harga_layanan,
+            'kategori' => $this->kategori,
+            'deskripsi' => $this->deskripsi,
             'tgl_layanan' => $this->tgl_layanan,
         ]);
 
@@ -103,6 +111,8 @@ class LayananIndex extends Component
         $this->nama_layanan = '';
         $this->harga_layanan = '';
         $this->tgl_layanan = '';
+        $this->deskripsi = '';
+        $this->kategori = '';
     }
 
     public function render()
@@ -110,6 +120,7 @@ class LayananIndex extends Component
         $layanans = LayananHotel::query()
             ->when($this->cari, function ($query) {
                 $query->where('nama_layanan', 'like', "%{$this->cari}%")
+                    ->orWhere('kategori', 'like', "%{$this->cari}%")
                     ->orWhere('harga_layanan', 'like', "%{$this->cari}%");
             })
             ->orderBy($this->sort, $this->direction)

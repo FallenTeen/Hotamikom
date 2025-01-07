@@ -15,7 +15,9 @@
             <a href="{{ route('login') }}">Login</a>
             <a href="{{ route('register') }}">Register</a>
         @else
-            <h1>Halo, {{ Auth::user()->name }}</h1>
+           <a href="dashboard">
+           <h1>Halo, {{ Auth::user()->name }}</h1>
+           </a>
         @endif
 
         <button @click="open = !open"

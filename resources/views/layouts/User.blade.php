@@ -74,24 +74,7 @@
                         <x-sidebar-link :href="route('managekamar')" :active="request()->routeIs('managekamar')"
                             wire:navigate>
                             <div class="flex gap-2">
-                                <div class="text-gray-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="size-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    {{ __('Kelola Kamar') }}
-                                </div>
-                            </div>
-                        </x-sidebar-link>
-                    </li>
-
-                    <li x-data="{ open: false }">
-                        <x-sidebar-link :active="request()->routeIs('layanan') || request()->routeIs('managereservasi' || request()->routeIs('managepembayaran'))" wire:navigate @click.prevent="open = !open">
-                            <div class="flex gap-2">
-                                <div class="text-gray-700">
+                            <div class="text-gray-700">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="size-6">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -103,47 +86,7 @@
                                 </div>
                             </div>
                         </x-sidebar-link>
-
-                        <!-- Submenu -->
-                        <div x-show="open" x-transition:enter="transition ease-out duration-200"
-                            x-transition:enter-start="opacity-0 transform scale-95"
-                            x-transition:enter-end="opacity-100 transform scale-100"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-100 transform scale-100"
-                            x-transition:leave-end="opacity-0 transform scale-95" id="submenulayanan"
-                            class="space-y-2 pl-3 pt-2">
-                            <ul>
-                                <li>
-                                    <x-sidebar-link :href="route('reservasi')" :active="request()->routeIs('reservasi')"
-                                        wire:navigate>
-                                        <div class="flex gap-2">
-                                            <div class="text-gray-700"></div>
-                                            <div>{{ __('Manajemen Reservasi') }}</div>
-                                        </div>
-                                    </x-sidebar-link>
-                                </li>
-                                <li>
-                                    <x-sidebar-link :href="route('layanan')"
-                                        :active="request()->routeIs('layanan')" wire:navigate>
-                                        <div class="flex gap-2">
-                                            <div class="text-gray-700"></div>
-                                            <div>{{ __('Manajemen Layanan') }}</div>
-                                        </div>
-                                    </x-sidebar-link>
-                                </li>
-                                <li>
-                                    <x-sidebar-link :href="route('pembayaran')"
-                                        :active="request()->routeIs('pembayaran')" wire:navigate>
-                                        <div class="flex gap-2">
-                                            <div class="text-gray-700"></div>
-                                            <div>{{ __('Manajemen Pembayaran') }}</div>
-                                        </div>
-                                    </x-sidebar-link>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
-
                     <li>
                         <x-sidebar-link :href="route('profile')" :active="request()->routeIs('profile')" wire:navigate>
                             <div class="flex gap-2">

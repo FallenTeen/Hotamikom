@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('tgl_checkin');
             $table->date('tgl_checkout');
             $table->integer('total_harga');
-            $table->enum('status',['pending','approved','canceled']);
+            $table->enum('status',['pending','approved','canceled','completed']);
             $table->timestamps();
         });
     }

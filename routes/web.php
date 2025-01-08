@@ -31,7 +31,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 //USER ROUTE ONLY
 Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/reservasi', \App\Livewire\Pages\User\ReservasiIndex::class)->name('managereservasi');
+    Route::get('/allres', \App\Livewire\Pages\User\ReservasiIndex::class)->name('managereservasi');
 });
 
 Route::get('/dashboard', function () {
@@ -53,6 +53,15 @@ Route::view('profile', 'profile')
 Route::post('/logout', function () {
     Auth::logout();
     return redirect()->route('/');
+})->name('logout');
+
+//udah dibenerin
+Route::get('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+
+    return redirect('/');
 })->name('logout');
 
 require __DIR__ . '/auth.php';

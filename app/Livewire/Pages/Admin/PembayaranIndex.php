@@ -109,10 +109,18 @@ class PembayaranIndex extends Component
             return;
         }
 
+        // Update status pembayaran
         $pembayaran->update(['status_pembayaran' => $status]);
 
-        sweetalert()->success('Status Pembayaran berhasil diubah');
+        // Update status di tabel reservasi
+        $reservasi = $pembayaran->reservasi; // Pastikan relasi `reservasi` ada di model Pembayaran
+        if ($reservasi) {
+            $reservasi->update(['status' => $status]);
+        }
+
+        sweetalert()->success('Status Pembayaran dan Reservasi berhasil diubah');
     }
+
 
     public function delete($id)
     {

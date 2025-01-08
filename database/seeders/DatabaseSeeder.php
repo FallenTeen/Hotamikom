@@ -16,8 +16,6 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             KamarSeeder::class,
             LayananHotelSeeder::class,
-            ReservasiSeeder::class,
-            PivotReservasiLayananSeeder::class,
         ]);
 
     }

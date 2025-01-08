@@ -107,14 +107,14 @@
                                             Cash
                                         </div>
                                     @elseif($pay->metode_pembayaran === 'transfer')
-                                        <div class="flex justify-center items-center gap-3"> 
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        <div class="flex justify-center items-center gap-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
                                             </svg>
-                                            Transfer</div>
+                                            Transfer
+                                        </div>
                                     @else
                                         {{ $pay->metode_pembayaran }}
                                     @endif
@@ -122,45 +122,49 @@
 
                                 <td class="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <div class="flex space-x-2 justify-center items-center">
-                                        @if($pay->status_pembayaran === 'pending')
-                                            <button
-                                                class=" hover:scale-105 duration-150 px-4 py-2 rounded-md bg-yellow-300 text-yellow-800 border border-yellow-500"
-                                                wire:click="updateStatus('pending', {{ $pay->id }})">
-                                                Pending
-                                            </button>
+                                        @if(($pay->reservasi->status === 'completed'))
+                                            <div class="bg-green-500 text-white py-1 px-2 rounded-md">Reservasi Selesai</div>
                                         @else
-                                            <button
-                                                class="hover:scale-105 duration-150 px-4 py-2 rounded-md bg-gray-200 text-gray-600 border border-gray-300"
-                                                wire:click="updateStatus('pending', {{ $pay->id }})">
-                                                Pending
-                                            </button>
-                                        @endif
+                                            @if($pay->status_pembayaran === 'pending')
+                                                <button
+                                                    class=" hover:scale-105 duration-150 px-4 py-2 rounded-md bg-yellow-300 text-yellow-800 border border-yellow-500"
+                                                    wire:click="updateStatus('pending', {{ $pay->id }})">
+                                                    Pending
+                                                </button>
+                                            @else
+                                                <button
+                                                    class="hover:scale-105 duration-150 px-4 py-2 rounded-md bg-gray-200 text-gray-600 border border-gray-300"
+                                                    wire:click="updateStatus('pending', {{ $pay->id }})">
+                                                    Pending
+                                                </button>
+                                            @endif
 
-                                        @if($pay->status_pembayaran === 'approved')
-                                            <button
-                                                class="hover:scale-105 duration-150 px-4 py-2 rounded-md bg-green-500 text-white border border-green-700"
-                                                wire:click="updateStatus('approved', {{ $pay->id }})">
-                                                Approved
-                                            </button>
-                                        @else
-                                            <button
-                                                class="hover:scale-105 duration-150 px-4 py-2 rounded-md bg-gray-200 text-gray-600 border border-gray-300"
-                                                wire:click="updateStatus('approved', {{ $pay->id }})">
-                                                Approved
-                                            </button>
-                                        @endif
-                                        @if($pay->status_pembayaran === 'canceled')
-                                            <button
-                                                class="hover:scale-105 duration-150 px-4 py-2 rounded-md bg-red-500 text-white border border-red-700"
-                                                wire:click="updateStatus('canceled', {{ $pay->id }})">
-                                                Canceled
-                                            </button>
-                                        @else
-                                            <button
-                                                class="hover:scale-105 duration-150 px-4 py-2 rounded-md bg-gray-200 text-gray-600 border border-gray-300"
-                                                wire:click="updateStatus('canceled', {{ $pay->id }})">
-                                                Canceled
-                                            </button>
+                                            @if($pay->status_pembayaran === 'approved')
+                                                <button
+                                                    class="hover:scale-105 duration-150 px-4 py-2 rounded-md bg-green-500 text-white border border-green-700"
+                                                    wire:click="updateStatus('approved', {{ $pay->id }})">
+                                                    Approved
+                                                </button>
+                                            @else
+                                                <button
+                                                    class="hover:scale-105 duration-150 px-4 py-2 rounded-md bg-gray-200 text-gray-600 border border-gray-300"
+                                                    wire:click="updateStatus('approved', {{ $pay->id }})">
+                                                    Approved
+                                                </button>
+                                            @endif
+                                            @if($pay->status_pembayaran === 'canceled')
+                                                <button
+                                                    class="hover:scale-105 duration-150 px-4 py-2 rounded-md bg-red-500 text-white border border-red-700"
+                                                    wire:click="updateStatus('canceled', {{ $pay->id }})">
+                                                    Canceled
+                                                </button>
+                                            @else
+                                                <button
+                                                    class="hover:scale-105 duration-150 px-4 py-2 rounded-md bg-gray-200 text-gray-600 border border-gray-300"
+                                                    wire:click="updateStatus('canceled', {{ $pay->id }})">
+                                                    Canceled
+                                                </button>
+                                            @endif
                                         @endif
                                     </div>
                                 </td>

@@ -131,7 +131,7 @@
 
     <section id="kamar">
         <div class="bg-white w-full pt-16">
-            <div  class="grid space-y-8 justify-center items-center">
+            <div class="grid space-y-8 justify-center items-center">
                 <h1 class="text-6xl font-Dmserif font-bold text-center">Pilihan Kamar</h1>
                 <p class="text-center  text-2xl text-gray-700 max-w-6xl"> Hotel Amikom menawarkan kenyamanan dan
                     fasilitas modern di pusat kota, dengan kamar luas,
@@ -160,8 +160,26 @@
             </div>
         </div>
     </section>
-    <section id="contact"></section>
 
+    <section>
+        @livewire('review-display')
+    </section>
+
+    <section id="resnow" class="relative bg-cover bg-center pb-12"
+        style="background-image: url('{{ asset('images/rand.jpg') }}'); background-attachment: fixed;">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col pt-12 gap-12">
+                <div class="justify-between mx-12 flex flex-row gap-8" data-aos="fade-up">
+                    <h1 class="text-6xl font-Dmserif font-bold text-white">Reservasi Sekarang</h1>
+                    <a class="flex items-center justify-center text-white border-2 rounded-full px-6" href="{{ route('res') }}">Klik Disini Untuk Reservasi</a>
+                   
+                </div>
+
+            </div>
+        </div>
+    </section>
     <section>
         <x-footer></x-footer>
     </section>

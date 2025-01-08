@@ -104,10 +104,6 @@
                                     {{ $rsv->status }}
                                 </td>
                                 <td class="px-6 py-4 text-center flex">
-                                    <button wire:click="editRsv({{ $rsv->id }})"
-                                        class="bg-blue-700 text-white px-4 py-2 rounded-md hover:bg-blue-800 focus:outline-none">
-                                        Edit
-                                    </button>
                                     <button wire:click="delete({{ $rsv->id }})"
                                         class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none ml-2">
                                         Hapus

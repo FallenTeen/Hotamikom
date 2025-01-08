@@ -31,15 +31,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 //USER ROUTE ONLY
 Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/reservasi', \App\Livewire\Pages\User\ReservasiIndex::class)->name('managereservasi');
 });
 
 Route::get('/dashboard', function () {
     if (Auth::check()) {
         if (Auth::user()->role == 'admin') {
-            return view('livewire.pages.admin.dashboard');
+            return redirect()->route('managekamar');
         }
         if (Auth::user()->role == 'user') {
-            return view('livewire.pages.user.dashboard');
+            return redirect()->route('managereservasi');
         }
     }
     return redirect()->route('login');

@@ -194,6 +194,7 @@
                     <div class="mb-4">
                         <label for="kategori" class="block text-sm font-medium text-gray-700">Kategori Layanan</label>
                         <select wire:model="kategori" id="kategori" class="w-full p-2 border rounded">
+                            <option value="">Pilih Kategori</option>
                             <option value="makanan">Makanan</option>
                             <option value="minuman">Minuman</option>
                             <option value="layanan_tambahan">Addons</option>

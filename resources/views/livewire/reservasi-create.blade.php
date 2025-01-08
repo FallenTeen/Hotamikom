@@ -56,11 +56,24 @@
                 value="Rp {{ number_format($total_harga, 0, ',', '.') }}" readonly>
         </div>
         <div class="mt-8 w-full col-span-2">
-            <button type="submit"
-                class="w-full py-3 px-6 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                Buat Reservasi
-            </button>
+            @auth
+                <!-- Tombol jika sudah login -->
+                <button type="submit"
+                    class="w-full py-3 px-6 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Buat Reservasi
+                </button>
+            @else
+                <!-- Tombol jika belum login -->
+                <a href="{{ route('login') . '?redirect=' . urlencode(url()->current()) }}">
+                    <button type="button"
+                        class="w-full py-3 px-6 bg-gray-400 text-white font-semibold rounded-md shadow-md cursor-not-allowed">
+                        Anda belum login
+                    </button>
+                </a>
+            @endauth
         </div>
+
+
     </div>
 </form>
 

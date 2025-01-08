@@ -99,6 +99,7 @@
                         <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                         <select id="status" wire:model="status"
                             class="w-full mt-2 p-2 border border-gray-300 rounded-lg">
+                            <option value="">Pilih Ketersediaan</option>
                             <option value="tersedia">Tersedia</option>
                             <option value="terisi">Terisi</option>
                         </select>
